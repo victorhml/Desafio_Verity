@@ -11,6 +11,14 @@ class UserViewController: UIViewController {
     
     let viewModel = UserViewModel()
     var users = [UserModel]()
+    var searchedUsers = [UserModel]()
+    var isSearching = false
+    
+    private var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        return searchBar
+    }()
     
     private var tableView: UITableView = {
         let tableView = UITableView()
@@ -21,11 +29,22 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Usuários"
+        setupSearchBar()
         setupTableView()
         viewModel.getUsersList { users in
             self.users = users
             self.tableView.reloadData()
         }
+    }
+    
+    func setupSearchBar() {
+        view.addSubview(searchBar)
+        searchBar.delegate = self
+        NSLayoutConstraint.activate([
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
     }
 
     func setupTableView() {
@@ -34,7 +53,7 @@ class UserViewController: UIViewController {
         tableView.delegate = self
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -56,20 +75,47 @@ class UserViewController: UIViewController {
     }
 }
 
+extension UserViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchedUsers = users.filter { $0.login.lowercased().prefix(searchText.count) == searchText.lowercased() }
+        isSearching = true
+        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        searchBar.text = ""
+        tableView.reloadData()
+    }
+}
+
 extension UserViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.goToUserInfo(navigationController: self.navigationController ?? UINavigationController(), currentUser: users[indexPath.row])
+        if isSearching {
+            viewModel.goToUserInfo(navigationController: self.navigationController ?? UINavigationController(), currentUser: searchedUsers[indexPath.row])
+        } else {
+            viewModel.goToUserInfo(navigationController: self.navigationController ?? UINavigationController(), currentUser: users[indexPath.row])
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        if isSearching {
+            return searchedUsers.count
+        } else {
+            return users.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
-        cell.textLabel?.text = users[indexPath.row].login
-        cell.imageView?.image = getImage(urlImageString: users[indexPath.row].avatarUrl)
+        if isSearching {
+            cell.textLabel?.text = searchedUsers[indexPath.row].login
+            cell.imageView?.image = getImage(urlImageString: searchedUsers[indexPath.row].avatarUrl)
+        } else {
+            cell.textLabel?.text = users[indexPath.row].login
+            cell.imageView?.image = getImage(urlImageString: users[indexPath.row].avatarUrl)
+        }
         return cell
     }
 }
