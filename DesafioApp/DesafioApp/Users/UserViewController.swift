@@ -14,13 +14,35 @@ class UserViewController: UIViewController {
     var searchedUsers = [UserModel]()
     var isSearching = false
     
-    private var searchBar: UISearchBar = {
+    private lazy var loadingView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    private lazy var loadingActivityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
+    
+    private lazy var errorLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Não foi possível carregar a lista de usuários"
+        return label
+    }()
+    
+    private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.showsCancelButton = true
+        searchBar.placeholder = "Nome do usuário"
         return searchBar
     }()
     
-    private var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -29,12 +51,38 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Usuários"
-        setupSearchBar()
-        setupTableView()
-        viewModel.getUsersList { users in
-            self.users = users
-            self.tableView.reloadData()
-        }
+        view.backgroundColor = .white
+        setupLoadingView()
+        setupLoadingActivityIndicator()
+        fillData()
+    }
+    
+    func setupLoadingView() {
+        view.addSubview(loadingView)
+        NSLayoutConstraint.activate([
+            loadingView.topAnchor.constraint(equalTo: view.topAnchor),
+            loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    func setupLoadingActivityIndicator() {
+        loadingView.addSubview(loadingActivityIndicator)
+        loadingActivityIndicator.startAnimating()
+        NSLayoutConstraint.activate([
+            loadingActivityIndicator.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor),
+            loadingActivityIndicator.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor)
+        ])
+    }
+    
+    func setupErrorLabel() {
+        loadingActivityIndicator.removeFromSuperview()
+        loadingView.addSubview(errorLabel)
+        NSLayoutConstraint.activate([
+            errorLabel.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor),
+            errorLabel.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor)
+        ])
     }
     
     func setupSearchBar() {
@@ -48,6 +96,7 @@ class UserViewController: UIViewController {
     }
 
     func setupTableView() {
+        loadingView.removeFromSuperview()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UserCell")
         tableView.dataSource = self
         tableView.delegate = self
@@ -61,17 +110,38 @@ class UserViewController: UIViewController {
     }
     
     func getImage(urlImageString: String) -> UIImage {
+        
+        var image = UIImage(systemName: "person.fill") ?? UIImage()
+        
         guard let urlImage = URL(string: urlImageString) else {
-            return UIImage(systemName: "person.fill") ?? UIImage()
+            image.withTintColor(.black)
+            return image
         }
         
         let data = try? Data(contentsOf: urlImage)
         
         if let imageData = data {
-            return UIImage(data: imageData) ?? UIImage()
+            image = UIImage(data: imageData) ?? UIImage()
+            return image
         }
         
-        return UIImage(systemName: "person.fill") ?? UIImage()
+        image.withTintColor(.black)
+        return image
+    }
+    
+    func fillData() {
+        viewModel.getUsersList { users in
+            if users.isEmpty {
+                self.loadingActivityIndicator.stopAnimating()
+                self.setupErrorLabel()
+            } else {
+                self.loadingActivityIndicator.stopAnimating()
+                self.users = users
+                self.setupSearchBar()
+                self.setupTableView()
+                self.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -109,6 +179,14 @@ extension UserViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
+        
+        cell.selectionStyle = .none
+        
+        cell.imageView?.layer.borderWidth = 1.0
+        cell.imageView?.layer.borderColor = UIColor.lightGray.cgColor
+        cell.imageView?.layer.cornerRadius = cell.bounds.height/2
+        cell.imageView?.clipsToBounds = true
+        
         if isSearching {
             cell.textLabel?.text = searchedUsers[indexPath.row].login
             cell.imageView?.image = getImage(urlImageString: searchedUsers[indexPath.row].avatarUrl)
