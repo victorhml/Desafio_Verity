@@ -31,6 +31,8 @@ class UserViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Não foi possível carregar a lista de usuários"
+        label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
     
@@ -39,6 +41,7 @@ class UserViewController: UIViewController {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.showsCancelButton = true
         searchBar.placeholder = "Nome do usuário"
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = .darkGray
         return searchBar
     }()
     
@@ -57,7 +60,7 @@ class UserViewController: UIViewController {
         fillData()
     }
     
-    func setupLoadingView() {
+    private func setupLoadingView() {
         view.addSubview(loadingView)
         NSLayoutConstraint.activate([
             loadingView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -67,7 +70,7 @@ class UserViewController: UIViewController {
         ])
     }
     
-    func setupLoadingActivityIndicator() {
+    private func setupLoadingActivityIndicator() {
         loadingView.addSubview(loadingActivityIndicator)
         loadingActivityIndicator.startAnimating()
         NSLayoutConstraint.activate([
@@ -76,16 +79,17 @@ class UserViewController: UIViewController {
         ])
     }
     
-    func setupErrorLabel() {
+    private func setupErrorLabel() {
         loadingActivityIndicator.removeFromSuperview()
         loadingView.addSubview(errorLabel)
         NSLayoutConstraint.activate([
-            errorLabel.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor),
+            errorLabel.leadingAnchor.constraint(equalTo: loadingView.leadingAnchor, constant: 20),
+            errorLabel.trailingAnchor.constraint(equalTo: loadingView.trailingAnchor, constant: -20),
             errorLabel.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor)
         ])
     }
     
-    func setupSearchBar() {
+    private func setupSearchBar() {
         view.addSubview(searchBar)
         searchBar.delegate = self
         NSLayoutConstraint.activate([
@@ -95,7 +99,7 @@ class UserViewController: UIViewController {
         ])
     }
 
-    func setupTableView() {
+    private func setupTableView() {
         loadingView.removeFromSuperview()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UserCell")
         tableView.dataSource = self
@@ -109,7 +113,7 @@ class UserViewController: UIViewController {
         ])
     }
     
-    func getImage(urlImageString: String) -> UIImage {
+    private func getImage(urlImageString: String) -> UIImage {
         
         var image = UIImage(systemName: "person.fill") ?? UIImage()
         
@@ -129,8 +133,8 @@ class UserViewController: UIViewController {
         return image
     }
     
-    func fillData() {
-        viewModel.getUsersList { users in
+    private func fillData() {
+        viewModel.getUsersList(urlString: "https://api.github.com/users") { users in
             if users.isEmpty {
                 self.loadingActivityIndicator.stopAnimating()
                 self.setupErrorLabel()

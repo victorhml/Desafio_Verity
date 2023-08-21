@@ -30,6 +30,8 @@ class RepoViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Não foi possível carregar a lista de repositórios de \(currentUserInfo?.login ?? "")"
+        label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
     
@@ -48,7 +50,7 @@ class RepoViewController: UIViewController {
         fillData()
     }
     
-    func setupLoadingView() {
+    private func setupLoadingView() {
         view.addSubview(loadingView)
         NSLayoutConstraint.activate([
             loadingView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -58,7 +60,7 @@ class RepoViewController: UIViewController {
         ])
     }
     
-    func setupLoadingActivityIndicator() {
+    private func setupLoadingActivityIndicator() {
         loadingView.addSubview(loadingActivityIndicator)
         loadingActivityIndicator.startAnimating()
         NSLayoutConstraint.activate([
@@ -67,16 +69,17 @@ class RepoViewController: UIViewController {
         ])
     }
     
-    func setupErrorLabel() {
+    private func setupErrorLabel() {
         loadingActivityIndicator.removeFromSuperview()
         loadingView.addSubview(errorLabel)
         NSLayoutConstraint.activate([
-            errorLabel.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor),
+            errorLabel.leadingAnchor.constraint(equalTo: loadingView.leadingAnchor, constant: 20),
+            errorLabel.trailingAnchor.constraint(equalTo: loadingView.trailingAnchor, constant: -20),
             errorLabel.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor)
         ])
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         loadingView.removeFromSuperview()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "RepoCell")
         tableView.dataSource = self
@@ -90,7 +93,7 @@ class RepoViewController: UIViewController {
         ])
     }
     
-    func fillData() {
+    private func fillData() {
         viewModel.getReposList(urlString: currentUserInfo?.reposUrl ?? "") { repos in
             if repos.isEmpty {
                 self.loadingActivityIndicator.stopAnimating()

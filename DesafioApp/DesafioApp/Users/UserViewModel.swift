@@ -10,9 +10,9 @@ import UIKit
 
 class UserViewModel {
     
-    func getUsersList(completion: @escaping ([UserModel]) -> Void) {
+    func getUsersList(urlString: String, completion: @escaping ([UserModel]) -> Void) {
         
-        let url = URL(string: "https://api.github.com/users")
+        let url = URL(string: urlString)
         
         var request = URLRequest(url: url!)
         

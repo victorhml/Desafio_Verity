@@ -30,6 +30,8 @@ class UserInfoViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Não foi possível carregar as informações do usuário: \(currentUser?.login ?? "")"
+        label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
     
@@ -179,7 +181,7 @@ class UserInfoViewController: UIViewController {
         fillData()
     }
     
-    func setupLoadingView() {
+    private func setupLoadingView() {
         view.addSubview(loadingView)
         NSLayoutConstraint.activate([
             loadingView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -189,7 +191,7 @@ class UserInfoViewController: UIViewController {
         ])
     }
     
-    func setupLoadingActivityIndicator() {
+    private func setupLoadingActivityIndicator() {
         loadingView.addSubview(loadingActivityIndicator)
         loadingActivityIndicator.startAnimating()
         NSLayoutConstraint.activate([
@@ -198,16 +200,17 @@ class UserInfoViewController: UIViewController {
         ])
     }
     
-    func setupErrorLabel() {
+    private func setupErrorLabel() {
         loadingActivityIndicator.removeFromSuperview()
         loadingView.addSubview(errorLabel)
         NSLayoutConstraint.activate([
-            errorLabel.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor),
+            errorLabel.leadingAnchor.constraint(equalTo: loadingView.leadingAnchor, constant: 20),
+            errorLabel.trailingAnchor.constraint(equalTo: loadingView.trailingAnchor, constant: -20),
             errorLabel.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor)
         ])
     }
     
-    func setupProfileImageView() {
+    private func setupProfileImageView() {
         view.addSubview(profileImageView)
         NSLayoutConstraint.activate([
             profileImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -217,7 +220,7 @@ class UserInfoViewController: UIViewController {
         ])
     }
     
-    func setupMainStackView() {
+    private func setupMainStackView() {
         view.addSubview(mainStackView)
         mainStackView.addArrangedSubview(nameLabel)
         mainStackView.addArrangedSubview(loginLabel)
@@ -236,17 +239,17 @@ class UserInfoViewController: UIViewController {
         ])
     }
     
-    func setupReposGistsStackView() {
+    private func setupReposGistsStackView() {
         reposGistsStackView.addArrangedSubview(reposLabel)
         reposGistsStackView.addArrangedSubview(gistsLabel)
     }
     
-    func setupFollowStackView() {
+    private func setupFollowStackView() {
         followStackView.addArrangedSubview(followersLabel)
         followStackView.addArrangedSubview(followingLabel)
     }
     
-    func setupReposButton() {
+    private func setupReposButton() {
         view.addSubview(reposButton)
         NSLayoutConstraint.activate([
             reposButton.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 32),
@@ -256,7 +259,7 @@ class UserInfoViewController: UIViewController {
         ])
     }
     
-    func fillData() {
+    private func fillData() {
         viewModel.getUserInfo(urlString: currentUser?.url ?? "") { userInfo in
             if let userInfo = userInfo {
                 self.currentUserInfo = userInfo
@@ -309,7 +312,7 @@ class UserInfoViewController: UIViewController {
         }
     }
     
-    func stringWithImage(imageName: String, text: String) -> NSMutableAttributedString {
+    private func stringWithImage(imageName: String, text: String) -> NSMutableAttributedString {
         let fullString = NSMutableAttributedString(string: "")
         let image1Attachment = NSTextAttachment()
         image1Attachment.image = UIImage(named: imageName)
@@ -322,7 +325,7 @@ class UserInfoViewController: UIViewController {
         return fullString
     }
     
-    func getImage(urlImageString: String) -> UIImage {
+    private func getImage(urlImageString: String) -> UIImage {
         
         var image = UIImage(systemName: "person.fill") ?? UIImage()
         
