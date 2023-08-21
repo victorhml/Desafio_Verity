@@ -25,16 +25,22 @@
 		D44C0F322A8FD71700D2E372 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C0F312A8FD71700D2E372 /* UserInfoViewController.swift */; };
 		D44C0F342A8FD78B00D2E372 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C0F332A8FD78B00D2E372 /* UserInfoViewModel.swift */; };
 		D44C0F362A8FD84D00D2E372 /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C0F352A8FD84D00D2E372 /* RepoViewModel.swift */; };
-		D47A282A2A93DFE4007A9ED9 /* UserCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A28292A93DFE4007A9ED9 /* UserCoordinatorTests.swift */; };
 		D47A282F2A93E0B0007A9ED9 /* UserViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A282E2A93E0B0007A9ED9 /* UserViewModelTests.swift */; };
-		D47A28312A93E480007A9ED9 /* UserInfoCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A28302A93E480007A9ED9 /* UserInfoCoordinatorTests.swift */; };
 		D47A28332A93E4BA007A9ED9 /* UserInfoViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A28322A93E4BA007A9ED9 /* UserInfoViewModelTests.swift */; };
-		D47A28352A93E523007A9ED9 /* RepoCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A28342A93E523007A9ED9 /* RepoCoordinatorTests.swift */; };
 		D47A28372A93E52F007A9ED9 /* RepoViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A28362A93E52F007A9ED9 /* RepoViewModelTests.swift */; };
+		D47A283F2A93FE01007A9ED9 /* DesafioAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A283E2A93FE00007A9ED9 /* DesafioAppUITests.swift */; };
+		D47A28412A93FE01007A9ED9 /* DesafioAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A28402A93FE01007A9ED9 /* DesafioAppUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		D44B82702A93D98E00A888B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D44C0EFA2A8FBCFE00D2E372 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D44C0F012A8FBCFE00D2E372;
+			remoteInfo = DesafioApp;
+		};
+		D47A28422A93FE01007A9ED9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D44C0EFA2A8FBCFE00D2E372 /* Project object */;
 			proxyType = 1;
@@ -65,12 +71,12 @@
 		D44C0F312A8FD71700D2E372 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		D44C0F332A8FD78B00D2E372 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		D44C0F352A8FD84D00D2E372 /* RepoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
-		D47A28292A93DFE4007A9ED9 /* UserCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoordinatorTests.swift; sourceTree = "<group>"; };
 		D47A282E2A93E0B0007A9ED9 /* UserViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModelTests.swift; sourceTree = "<group>"; };
-		D47A28302A93E480007A9ED9 /* UserInfoCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCoordinatorTests.swift; sourceTree = "<group>"; };
 		D47A28322A93E4BA007A9ED9 /* UserInfoViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModelTests.swift; sourceTree = "<group>"; };
-		D47A28342A93E523007A9ED9 /* RepoCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCoordinatorTests.swift; sourceTree = "<group>"; };
 		D47A28362A93E52F007A9ED9 /* RepoViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewModelTests.swift; sourceTree = "<group>"; };
+		D47A283C2A93FE00007A9ED9 /* DesafioAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesafioAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D47A283E2A93FE00007A9ED9 /* DesafioAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesafioAppUITests.swift; sourceTree = "<group>"; };
+		D47A28402A93FE01007A9ED9 /* DesafioAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesafioAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D44C0EFF2A8FBCFE00D2E372 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D47A28392A93FE00007A9ED9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -106,6 +119,7 @@
 			children = (
 				D44C0F042A8FBCFE00D2E372 /* DesafioApp */,
 				D44B826D2A93D98E00A888B0 /* DesafioAppTests */,
+				D47A283D2A93FE00007A9ED9 /* DesafioAppUITests */,
 				D44C0F032A8FBCFE00D2E372 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -115,6 +129,7 @@
 			children = (
 				D44C0F022A8FBCFE00D2E372 /* DesafioApp.app */,
 				D44B826C2A93D98E00A888B0 /* DesafioAppTests.xctest */,
+				D47A283C2A93FE00007A9ED9 /* DesafioAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,7 +195,6 @@
 		D47A282B2A93DFEE007A9ED9 /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				D47A28292A93DFE4007A9ED9 /* UserCoordinatorTests.swift */,
 				D47A282E2A93E0B0007A9ED9 /* UserViewModelTests.swift */,
 			);
 			path = Users;
@@ -189,7 +203,6 @@
 		D47A282C2A93DFF9007A9ED9 /* Repos */ = {
 			isa = PBXGroup;
 			children = (
-				D47A28342A93E523007A9ED9 /* RepoCoordinatorTests.swift */,
 				D47A28362A93E52F007A9ED9 /* RepoViewModelTests.swift */,
 			);
 			path = Repos;
@@ -198,10 +211,18 @@
 		D47A282D2A93E002007A9ED9 /* User Info */ = {
 			isa = PBXGroup;
 			children = (
-				D47A28302A93E480007A9ED9 /* UserInfoCoordinatorTests.swift */,
 				D47A28322A93E4BA007A9ED9 /* UserInfoViewModelTests.swift */,
 			);
 			path = "User Info";
+			sourceTree = "<group>";
+		};
+		D47A283D2A93FE00007A9ED9 /* DesafioAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D47A283E2A93FE00007A9ED9 /* DesafioAppUITests.swift */,
+				D47A28402A93FE01007A9ED9 /* DesafioAppUITestsLaunchTests.swift */,
+			);
+			path = DesafioAppUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +263,24 @@
 			productReference = D44C0F022A8FBCFE00D2E372 /* DesafioApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D47A283B2A93FE00007A9ED9 /* DesafioAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D47A28442A93FE01007A9ED9 /* Build configuration list for PBXNativeTarget "DesafioAppUITests" */;
+			buildPhases = (
+				D47A28382A93FE00007A9ED9 /* Sources */,
+				D47A28392A93FE00007A9ED9 /* Frameworks */,
+				D47A283A2A93FE00007A9ED9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D47A28432A93FE01007A9ED9 /* PBXTargetDependency */,
+			);
+			name = DesafioAppUITests;
+			productName = DesafioAppUITests;
+			productReference = D47A283C2A93FE00007A9ED9 /* DesafioAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -258,6 +297,10 @@
 					};
 					D44C0F012A8FBCFE00D2E372 = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					D47A283B2A93FE00007A9ED9 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = D44C0F012A8FBCFE00D2E372;
 					};
 				};
 			};
@@ -276,6 +319,7 @@
 			targets = (
 				D44C0F012A8FBCFE00D2E372 /* DesafioApp */,
 				D44B826B2A93D98E00A888B0 /* DesafioAppTests */,
+				D47A283B2A93FE00007A9ED9 /* DesafioAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -298,6 +342,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D47A283A2A93FE00007A9ED9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -305,12 +356,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D47A282A2A93DFE4007A9ED9 /* UserCoordinatorTests.swift in Sources */,
 				D47A28332A93E4BA007A9ED9 /* UserInfoViewModelTests.swift in Sources */,
 				D47A28372A93E52F007A9ED9 /* RepoViewModelTests.swift in Sources */,
 				D47A282F2A93E0B0007A9ED9 /* UserViewModelTests.swift in Sources */,
-				D47A28312A93E480007A9ED9 /* UserInfoCoordinatorTests.swift in Sources */,
-				D47A28352A93E523007A9ED9 /* RepoCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +384,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D47A28382A93FE00007A9ED9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D47A28412A93FE01007A9ED9 /* DesafioAppUITestsLaunchTests.swift in Sources */,
+				D47A283F2A93FE01007A9ED9 /* DesafioAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -343,6 +400,11 @@
 			isa = PBXTargetDependency;
 			target = D44C0F012A8FBCFE00D2E372 /* DesafioApp */;
 			targetProxy = D44B82702A93D98E00A888B0 /* PBXContainerItemProxy */;
+		};
+		D47A28432A93FE01007A9ED9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D44C0F012A8FBCFE00D2E372 /* DesafioApp */;
+			targetProxy = D47A28422A93FE01007A9ED9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -531,6 +593,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -559,6 +622,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -571,6 +635,40 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D47A28452A93FE01007A9ED9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BX4M427AJ4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.victorhml.DesafioAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DesafioApp;
+			};
+			name = Debug;
+		};
+		D47A28462A93FE01007A9ED9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BX4M427AJ4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.victorhml.DesafioAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DesafioApp;
 			};
 			name = Release;
 		};
@@ -600,6 +698,15 @@
 			buildConfigurations = (
 				D44C0F172A8FBD0200D2E372 /* Debug */,
 				D44C0F182A8FBD0200D2E372 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D47A28442A93FE01007A9ED9 /* Build configuration list for PBXNativeTarget "DesafioAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D47A28452A93FE01007A9ED9 /* Debug */,
+				D47A28462A93FE01007A9ED9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

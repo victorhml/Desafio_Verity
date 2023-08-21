@@ -120,6 +120,4 @@ extension RepoViewController: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = repos[indexPath.row].name
         return cell
     }
-    
-    
 }

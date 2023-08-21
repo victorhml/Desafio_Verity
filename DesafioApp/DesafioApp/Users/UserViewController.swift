@@ -159,6 +159,7 @@ extension UserViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         searchBar.text = ""
+        searchBar.resignFirstResponder()
         tableView.reloadData()
     }
 }

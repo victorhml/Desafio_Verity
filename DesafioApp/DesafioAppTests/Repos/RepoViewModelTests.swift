@@ -24,7 +24,7 @@ class RepoViewModelTests: XCTestCase {
     
     func test_getReposListWithError() {
         viewModel.getReposList(urlString: "https://api.github.com/users/torvalds/repos1") { repos in
-            XCTAssertNil(repos) 
+            XCTAssertNil(repos)
         }
     }
 }

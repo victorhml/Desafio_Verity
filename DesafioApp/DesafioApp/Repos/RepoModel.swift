@@ -41,11 +41,4 @@ struct RepoModel: Codable {
         case `private`
         case htmlUrl = "html_url"
     }
-    
-//    "id": 1119731,
-//        "node_id": "MDEwOlJlcG9zaXRvcnkxMTE5NzMx",
-//        "name": "abbot-from-scratch",
-//        "full_name": "wycats/abbot-from-scratch",
-//        "private": false,
-//    "html_url": "https://github.com/wycats/abbot-from-scratch",
 }

@@ -32,6 +32,5 @@ class UserViewModelTests: XCTestCase {
         let navigationController = UINavigationController()
         let userModel = UserModel()
         viewModel.goToUserInfo(navigationController: navigationController, currentUser: userModel)
-        
     }
 }
