@@ -31,6 +31,7 @@ class UserViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Não foi possível carregar a lista de usuários"
+        label.font = UIFont.boldSystemFont(ofSize: 24)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label

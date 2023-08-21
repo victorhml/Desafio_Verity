@@ -30,6 +30,7 @@ class UserInfoViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Não foi possível carregar as informações do usuário: \(currentUser?.login ?? "")"
+        label.font = UIFont.boldSystemFont(ofSize: 24)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
