@@ -8,7 +8,7 @@ Utilizando a seguinte [API](https://developer.github.com/v3/)
 
 ### Primeira Tela - Lista de usuários
 
-Na primeira tela, tem uma lista de usuários do github, tendo a opção de clicar em algum dos itens ou usar o campo de busca para procurar um dos usuários listados. Clicando em um dos usuários, o aplicativo vai para a tela de informações do usuário. <br>
+Na primeira tela, tem uma lista de usuários do github, tendo a opção de clicar em algum dos itens ou usar o campo de busca para procurar um dos usuários listados. Clicando em um dos usuários, é apresentada a tela com suas informações <br>
 
 <kbd>
 <img src="images/01_initial_screen.png" width="200"/>
@@ -29,7 +29,6 @@ Na segunda tela são exibidas as informações do usuário selecionado. Clicando
 <kbd>
 <img src="images/05_user_screen.png" width="200"/>
 </kbd>
-<br>
 
 A tela exibe informações quanto ao carregamento e erro caso haja um problema ao carregar as informações do usuário<br>
 
@@ -40,12 +39,13 @@ A tela exibe informações quanto ao carregamento e erro caso haja um problema a
 
 ### Terceira Tela - Lista de repositórios
 
+A terceira tela apresenta uma lista de repositórios do usuário selecionado.<br>
+
 <kbd>
 <img src="images/08_repo_screen.png" width="200"/>
 </kbd>
 
-
-A tela exibe informações quanto ao carregamento e erro caso haja um problema ao carregar a lista de repositórios<br>
+A tela exibe informações quanto ao carregamento e erro caso haja um problema ao carregar a lista de repositórios:<br>
 
 <kbd>
 <img src="images/09_repo_screen_loading.png" width="200"/>
