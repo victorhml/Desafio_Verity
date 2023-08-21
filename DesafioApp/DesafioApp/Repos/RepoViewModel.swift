@@ -10,7 +10,7 @@ import Foundation
 class RepoViewModel {
     
     func getReposList(urlString: String, completion: @escaping ([RepoModel]) -> Void) {
-        let url = URL(string: urlString + "1")
+        let url = URL(string: urlString)
         
         var request = URLRequest(url: url!)
         
